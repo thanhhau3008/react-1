@@ -15,14 +15,18 @@ class ColorPicker extends Component {
             height : 30
         };
     }
+    setActive(color){
+      this.props.onReceveColor(color);
+    }
 
   render() {
 
     var elmColor = this.state.colors.map((color, index)=>{
         return <button
-        className="mr-2"
+        className={this.props.color === color ? 'active mr-2' : 'mr-2' }
         key={index} 
         style={this.showColor(color)}
+        onClick={()=>this.setActive(color)}
       ></button>
     });
 
